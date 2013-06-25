@@ -1,0 +1,51 @@
+Phoneme
+
+A (very) simple script to encrypt all existing email in a gmail account with your gpg keys
+It goes through your email, encrypts it with your public key as the recipient, and sends it via gmail smtp back to your account. It goes through all your folders but only hits messages without "BEGIN PGP MESSAGE" in the body, so running it continuously will not result in constant resending of existing encrypted messages, and it also won't re-encrypt already encrypted messages from your peers that are using PGP to contact you already.
+
+Why:
+
+If you don't have time to setup and run your own mail infrastructure, but you still value your privacy.
+
+Requires:
+
+1) Setup GPG with your public key imported so you can encrypt to yourself.
+2) python gnupg (pip install gnupg)
+3) A gmail account, if you have two factor auth enabled you will need an application specific password for your gmail account.
+
+Usage:
+
+Run python crypt_gmail.py
+Enter username
+Enter password
+
+You will see a report for each mail that is encrypted
+
+See Also:
+
+Mailvelope, allows you to view  your PGP encrypted messages via the traditional gmail web interface without messing around with a client side engimail setup, using both Phoneme and mailvelope it's possible to run a fully encrypted webmail service using gmail's infrastructure for storage / sending etc.
+
+http://www.mailvelope.com/
+
+Android privacy guard, allows you to view your encrypted messages on yor phone;
+
+http://www.thialfihar.org/projects/apg/
+
+TODO:
+
+The code to delete the messages once they've been fetched and resent is in there, and status returns from the gmail server indicate that it is working, however on the web interface the messages in question appear to still be there. Fix this.
+
+Gotchas:
+
+All encrypted messages will show as being from "me", if you use your from addresses to sort your messages, this is probably not for you.
+
+Does not encrypted the subjects of each message.
+
+License:
+
+http://www.apache.org/licenses/LICENSE-2.0.html
+
+Author: 
+
+Eric Bennett <eric@umbralservices.com>
+
