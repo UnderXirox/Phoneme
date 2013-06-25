@@ -1,6 +1,6 @@
 Phoneme
 
-A (very) simple script to encrypt all existing email in a gmail account with your gpg keys. The intent is that it is simple enough that even a layperson ought to be able to tell that there's nothing suspicious going on with the code and it does what it says on the tin.
+A (very) simple script to encrypt all existing email in a gmail account with your gpg keys. The intent is that Phoneme is simple enough that even a layperson ought to be able to tell that there's nothing suspicious going on with the code and it does what it says on the tin.
 
 Phoneme goes through your email, encrypts it with your public key as the recipient, and sends it via gmail smtp back to your account. 
 
