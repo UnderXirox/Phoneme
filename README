@@ -8,7 +8,9 @@ Phoneme goes through all your folders but only hits messages without "BEGIN PGP 
 
 Why:
 
-If you don't have time to setup and run your own mail infrastructure, but you still value your privacy. For the record I both like and trust Google, this is not intended as an attack on them.
+If you don't have time to setup and run your own mail infrastructure, but you still value your privacy. 
+
+For the record I both like and trust Google, this is not intended as an attack on them.
 
 Requires:
 
