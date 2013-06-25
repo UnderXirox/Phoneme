@@ -7,7 +7,7 @@ Phoneme goes through all your folders but only hits messages without "BEGIN PGP 
 
 Why:
 
-If you don't have time to setup and run your own mail infrastructure, but you still value your privacy. For the record, I both like and trust Google, this is not intended as an attack on them.
+If you don't have time to setup and run your own mail infrastructure, but you still value your privacy. For the record I both like and trust Google, this is not intended as an attack on them.
 
 Requires:
 
@@ -39,7 +39,7 @@ The code to delete the messages once they've been fetched and resent is in there
 
 Gotchas:
 
-All encrypted messages will show as being from "me", if you use your from addresses to sort your messages, this is probably not for you.
+All encrypted messages will show as being from "me", if you use your from addresses to sort your messages, this is probably not for you. That said, the full original content including headers exists within the new encrypted message body, so for archival purposes, you don't lose any information.
 
 Does not encrypted the subjects of each message.
 
