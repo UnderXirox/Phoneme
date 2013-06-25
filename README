@@ -44,6 +44,8 @@ Gotchas:
 
 All encrypted messages will show as being from "me", if you use your from addresses to sort your messages, this is probably not for you. That said, the full original content including headers exists within the new encrypted message body, so for archival purposes, you don't lose any information.
 
+If you have an enormous gmail inbox, you will likely quickly exceed your maximum mails sent per day.
+
 Does not encrypted the subjects of each message.
 
 License:
