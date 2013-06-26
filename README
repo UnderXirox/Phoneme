@@ -15,7 +15,7 @@ For the record I both like and trust Google, this is not intended as an attack o
 Requires:
 
 1) Setup GPG with your public key imported so you can encrypt to yourself.
-2) python gnupg (pip install gnupg)
+2) python gnupg (pip install python-gnupg)
 3) A gmail account, if you have two factor auth enabled you will need an application specific password for your gmail account.
 
 Usage:
