@@ -2,7 +2,7 @@ Phoneme
 
 A (very) simple script to encrypt all existing email in a gmail account with your gpg keys. The intent is that Phoneme is simple enough that even a layperson ought to be able to tell that there's nothing suspicious going on with the code and it does what it says on the tin.
 
-Phoneme goes through your email, encrypts it with your public key as the recipient, **DELETES THE PLAINTEXT UNENCRYPTED ORIGINAL** and appends it back to the folder it originally was in with the from and date information intact 
+Phoneme goes through your email, encrypts it with your public key as the recipient, **DELETES THE PLAINTEXT UNENCRYPTED ORIGINAL** and appends it back to the folder it originally was in with the from and date information intact. It does not however remove the plaintext original from your trash folder, so when the full encryption process has finished you may want to check your trash folder and make sure everything is ok before you hit 'delete forever' 
 
 Special thanks go to https://github.com/mannkind who gave me a primer on how this works by demonstration in the IMAPEncrypt source.
 
@@ -44,15 +44,11 @@ http://www.thialfihar.org/projects/apg/
 
 TODO:
 
-The code to delete the messages once they've been fetched and resent is in there, and status returns from the gmail server indicate that it is working, however on the web interface the messages in question appear to still be there. Fix this.
+Open to suggestions.
 
 Gotchas:
 
-All encrypted messages will show as being from "me", if you use your from addresses to sort your messages, this is probably not for you. That said, the full original content including headers exists within the new encrypted message body, so for archival purposes, you don't lose any information.
-
-If you have an enormous gmail inbox, you will likely quickly exceed your maximum mails sent per day.
-
-Does not encrypt the subjects of each message.
+You need to "delete forever" the final result when all the mail has been encrypted, the delete function however is fixed now and works properly.
 
 License:
 

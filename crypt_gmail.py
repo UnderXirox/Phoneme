@@ -74,7 +74,7 @@ def all_mail():
     id_list = ids.split()
     for imap_id in id_list:
       result,data = mail.fetch(imap_id,'(RFC822)')    
-      mail.store(imap_id, '+FLAGS', '\\Deleted')
+      mail.store(imap_id, '+X-GM-LABELS', '\\Trash')
       mail.expunge()
 
       msg = email.message_from_string(data[0][1])
@@ -100,8 +100,9 @@ def send_mail(data,send_from,rcpt_to,subject):
   session.sendmail(send_from,rcpt_to,msg.as_string())
   
 for folder,msg,date,headers in all_mail():
-  encrypted_body = encrypt_msg(msg)
-
-  mail.append(folder,'\\seen',date, flatten_message(encrypted_body))
-
-  print "Encrypted %s from %s in folder %s" % (headers['Subject'],headers['From'],folder)
+  try:
+    encrypted_body = encrypt_msg(msg)
+    mail.append(folder,'\\seen',date, flatten_message(encrypted_body))
+    print "Encrypted %s from %s in folder %s" % (headers['Subject'],headers['From'],folder)
+  except Exception, e:
+    print e
