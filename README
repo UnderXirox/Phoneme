@@ -2,9 +2,11 @@ Phoneme
 
 A (very) simple script to encrypt all existing email in a gmail account with your gpg keys. The intent is that Phoneme is simple enough that even a layperson ought to be able to tell that there's nothing suspicious going on with the code and it does what it says on the tin.
 
-Phoneme goes through your email, encrypts it with your public key as the recipient, **DELETES THE PLAINTEXT UNENCRYPTED ORIGINAL** and sends it via gmail smtp back to your account. 
+Phoneme goes through your email, encrypts it with your public key as the recipient, **DELETES THE PLAINTEXT UNENCRYPTED ORIGINAL** and appends it back to the folder it originally was in with the from and date information intact 
 
-Phoneme goes through all your folders but only hits messages without "BEGIN PGP MESSAGE" in the body, so running it continuously will not result in constant resending of existing encrypted messages, and it also won't re-encrypt already encrypted messages from your peers that are using PGP to contact you.
+Special thanks go to https://github.com/mannkind who gave me a primer on how this works by demonstration in the IMAPEncrypt source.
+
+Phoneme goes through all your folders but only hits messages without "BEGIN PGP MESSAGE" in the body, so running it continuously will not result in constant re-encrypting of existing encrypted messages, and it also won't re-encrypt already encrypted messages from your peers that are using PGP to contact you.
 
 Why:
 
@@ -27,6 +29,10 @@ Enter password
 You will see a report for each mail that is encrypted
 
 See Also:
+
+IMAPEncrypt:
+
+Functions similarly to phoneme except instead of encrypting all your existing un-encrypted email, connects to gmail and maintains a connection via IMAP IDLE and auto-encrypts all new unencrypted incoming messages instantly.
 
 Mailvelope, allows you to view  your PGP encrypted messages via the traditional gmail web interface without messing around with a client side enigmail setup, using both Phoneme and Mailvelope it's possible to run a fully encrypted webmail service using gmail's infrastructure for storage / sending etc.
 
