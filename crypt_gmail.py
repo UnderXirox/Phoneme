@@ -14,6 +14,8 @@ gpg = gnupg.GPG()
 gpg.encoding = 'utf-8'
 print "Gmail user"
 recipient = raw_input()
+print "Gmail folder (label) to encrypt (leave blank for all mail - case sensitive)"
+specific_folder = raw_input()
 password = getpass.getpass("Gmail password:")
 mail = imaplib.IMAP4_SSL('imap.gmail.com')
 mail.login(recipient,password)
@@ -63,17 +65,21 @@ def flatten_message(msg):
 
 
 def all_folders():
-  for folder in mail.list()[1]:
-    yield folder.split("/")[1].split('"')[2]
+  if specific_folder != '':
+    yield specific_folder
+  else:
+    for folder in mail.list()[1]:
+      yield folder.split("/")[1].split('"')[2]
 
 def all_mail():
   for folder in all_folders():
+    print 'Processing folder:', folder
     mail.select(folder)
     result, data = mail.search(None,'(NOT BODY "BEGIN PGP MESSAGE")')
     ids = data[0]
     id_list = ids.split()
     for imap_id in id_list:
-      result,data = mail.fetch(imap_id,'(RFC822)')    
+      result,data = mail.fetch(imap_id,'(RFC822)')
       mail.store(imap_id, '+X-GM-LABELS', '\\Trash')
       mail.expunge()
 
@@ -92,13 +98,13 @@ def all_mail():
 
 def send_mail(data,send_from,rcpt_to,subject):
   msg = MIMEText(data)
-   
+
   msg['Subject'] = subject
   msg['From'] = send_from
   msg['To'] = rcpt_to
 
   session.sendmail(send_from,rcpt_to,msg.as_string())
-  
+
 for folder,msg,date,headers in all_mail():
   try:
     encrypted_body = encrypt_msg(msg)
